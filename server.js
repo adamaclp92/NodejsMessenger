@@ -4,6 +4,12 @@ var net = require('net');
 //betűszín állítási lehetőség
 const chalk = require('chalk');
 
+//Létrehozom a dátum változó. Alapértelmezettként így jelenik meg: '2012-11-04T14:51:06.157Z'
+const date = new Date().toISOString().
+replace(/T/, ' ').      // T betű helyettesítése szóközzel
+replace(/\..+/, '').    //pont és az azt követő karakterek törlése
+replace(/-/, '.').      //első - helyettesítése .-tal
+replace(/-/, '.')       //második - helyettesítése .-tal
 
 //"npm install prompt-sync" command a terminalon
 //Megkérdezi a nevet (ékezetet nem érzékel), és köszön zöld színnel, majd ezt a nevet fogja kiírni az üzeneteknél
@@ -26,7 +32,7 @@ var server = net.createServer(
 		// alapján kiírása a kliensnél cián színnel
 		process.stdin.on('data',
 		function(buffer){
-			client.write(chalk.cyan(name + ' üzenete: ' +  buffer));
+			client.write(chalk.cyan(date + ' ' + name + ' üzenete: ' +  buffer));
 		}
 	);
 
@@ -40,6 +46,6 @@ var server = net.createServer(
 );
 
 //Szerver várakozik a 3000-es porton
-console.log('A szerver várakozik aa ' + port + '-es porton!')
+console.log('A szerver várakozik a ' + port + '-es porton!')
 server.listen(port);
 
