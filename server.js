@@ -39,6 +39,6 @@ var server = net.createServer(
 );
 
 //Szerver várakozik a 3000-es porton
-console.log('A szerver várakozik a ' + port + '-es porton!')
+console.log('A szerver várakozik aa ' + port + '-es porton!')
 server.listen(port);
 
