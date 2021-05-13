@@ -4,6 +4,7 @@ var net = require('net');
 //betűszín állítási lehetőség
 const chalk = require('chalk');
 
+
 //"npm install prompt-sync" command a terminalon
 //Megkérdezi a nevet (ékezetet nem érzékel), és köszön zöld színnel, majd ezt a nevet fogja kiírni az üzeneteknél
 const prompt = require('prompt-sync')();
